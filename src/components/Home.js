@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
 
+import Schedule from "./Schedule"
+import Details from './Details';
+
 const options = [
     {
         major: "SWB",
@@ -15,10 +18,13 @@ const options = [
     }
 ]
 
+
+
 export default function Home() {
     const [selectedMajor, setSelectedMajor] = useState('default');
     const [selectedSemester, setSelectedSemester] = useState('default');
     const [selectedDate, setSelectedDate] = useState(new Date().toISOString().substring(0, 10));
+    const [selectedClass, setSelectedClass] = useState(null);
 
     const handleMajorChange = (event) => {
         setSelectedMajor(event.target.value);
@@ -29,6 +35,10 @@ export default function Home() {
     const handleDateChange = (event) => {
         setSelectedDate(event.target.value);
     }
+    const handleStateChange = (updatedValue) => {
+        setSelectedClass(updatedValue);
+    }
+    console.log(selectedClass)
 
     return(
         <div className='main' id='homeMain'>
@@ -37,8 +47,8 @@ export default function Home() {
                 <h2>Choose your schedule:</h2>
                 <div className='filter' id='majorFilter'>
                     <h4>Major:</h4>
-                    <select value={selectedMajor} onChange={handleMajorChange}>
-                        <option value="default" selected disabled>Select Major</option>
+                    <select value={selectedMajor} defaultValue="default" onChange={handleMajorChange}>
+                        <option value="default" disabled>Select Major</option>
                         {
                             options.map((major, key) => {
                                 return (
@@ -50,8 +60,8 @@ export default function Home() {
                 </div>
                 <div className='filter' id='semesterFilter'>
                     <h4>Semester:</h4>
-                    <select value={selectedSemester} onChange={handleSemesterChange}>
-                        <option value="default" selected disabled>Select Semester</option>
+                    <select value={selectedSemester} defaultValue="default" onChange={handleSemesterChange}>
+                        <option value="default" disabled>Select Semester</option>
                         {
                             selectedMajor !== "default" ? (
                                 options.map((major) => {
@@ -78,22 +88,14 @@ export default function Home() {
             </div>
             {
                 selectedMajor !== "default" && selectedSemester !== "default" ? (
-                    <DisplaySchedule selectedMajor={selectedMajor} selectedSemester={selectedSemester} selectedDate={selectedDate} />
+                    <Schedule selectedMajor={selectedMajor} selectedSemester={selectedSemester} selectedDate={selectedDate} onStateChange={handleStateChange}/>
                 ) : (
                     null
                 )
             }
-        </div>
-    )
-}
-
-function DisplaySchedule({ selectedMajor, selectedSemester, selectedDate }) {
-    console.log("selectedMajor", selectedMajor)
-    console.log("selectedSemester", selectedSemester)
-    console.log("selectedDate", selectedDate)
-    return (
-        <div>
-            <h1>Schedule</h1>
+            {
+                selectedClass !== null ? (<Details selectedClass={selectedClass} />) : (<h1>didnt worked</h1>) 
+            }
         </div>
     )
 }
