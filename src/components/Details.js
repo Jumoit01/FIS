@@ -1,6 +1,11 @@
-export default function Details({selectedClass}) {
+export default function Details({ selectedClass, onStateChange}) {
+    const handleButtonClick = () => {
+        // Call the onStateChange function passed down from the parent component
+        // with the updated state value as an argument
+        onStateChange();
+    };
     return (
-        <div>
+        <div className="details">
             <h1>{selectedClass}</h1>
             <table>
                 <tr>
@@ -12,7 +17,7 @@ export default function Details({selectedClass}) {
                     <td></td>
                 </tr>
             </table>
-            <button>Show me the way!</button>
+            <button onClick={handleButtonClick}>Show me the way!</button>
         </div>
     )
 }

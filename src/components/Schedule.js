@@ -20,7 +20,7 @@ export default function Schedule({ selectedMajor, selectedSemester, selectedDate
     };
 
     return (
-        <div>
+        <div className="schedule">
             <div>
                 <h1>Schedule</h1>
                 <h4>Selected Major: {selectedMajor}</h4>

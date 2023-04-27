@@ -2,6 +2,9 @@ import React, { useState } from 'react'
 
 import Schedule from "./Schedule"
 import Details from './Details';
+import Router from './Router';
+
+import "./stylesheets/Home.css"
 
 const options = [
     {
@@ -25,6 +28,7 @@ export default function Home() {
     const [selectedSemester, setSelectedSemester] = useState('default');
     const [selectedDate, setSelectedDate] = useState(new Date().toISOString().substring(0, 10));
     const [selectedClass, setSelectedClass] = useState(null);
+    const [showPath, setShowPath] = useState(false);
 
     const handleMajorChange = (event) => {
         setSelectedMajor(event.target.value);
@@ -38,11 +42,18 @@ export default function Home() {
     const handleStateChange = (updatedValue) => {
         setSelectedClass(updatedValue);
     }
-    console.log(selectedClass)
+    const handleShowPathChange = () => {
+        setShowPath(!showPath);
+    }
+    const exitShowPathChange = () => {
+        setShowPath(false);
+    }
 
     return(
         <div className='main' id='homeMain'>
-            <h1>Faculty Information System</h1>
+            <div className='title'>
+                <h1>Faculty Information System</h1>
+            </div>
             <div className='filterOption'>
                 <h2>Choose your schedule:</h2>
                 <div className='filter' id='majorFilter'>
@@ -94,8 +105,12 @@ export default function Home() {
                 )
             }
             {
-                selectedClass !== null ? (<Details selectedClass={selectedClass} />) : (<h1>didnt worked</h1>) 
+                selectedClass !== null ? (<Details selectedClass={selectedClass} onStateChange={handleShowPathChange} />) : null 
             }
+            {
+                showPath === true ? (<Router exit={exitShowPathChange}  />) : null
+            }
+            
         </div>
     )
 }

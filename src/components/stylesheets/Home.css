@@ -1,0 +1,51 @@
+.main {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 0.5fr 1fr 1fr;
+}
+
+.title {
+    grid-column: 1 / -1; /* This spans the first row */
+    display: flex;
+    background-color: #333;
+    color: white;
+
+    padding: 20px;
+}
+
+.filterOption {
+    grid-row: 2; /* This places the box in the second row */
+    grid-column: 1; /* This places the box in the first column */
+    background-color: aquamarine;
+}
+
+.schedule {
+    grid-row: 2 / 4; /* This places the box in the second row */
+    grid-column: 2; /* This places the box in the first column */
+    background-color: red;
+}
+
+.details {
+    grid-row: 3; /* This places the box in the second row */
+    grid-column: 1; /* This places the box in the first column */
+    background-color: greenyellow;
+}
+
+.router {
+    grid-row: 2 / 4; /* This places the box in the second row */
+    grid-column: 2; /* This places the box in the first column */
+    background-color: magenta;
+
+    display: flex;
+    flex-direction: column;
+}
+.exit {
+    display: flex;
+    flex-direction: row-reverse;
+    margin-top: 1vw;
+    margin-right: 1vw;
+}
+.exit svg {
+    height: 1.5rem;
+    width: 1.5rem;
+}
