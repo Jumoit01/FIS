@@ -1,3 +1,6 @@
+import './stylesheets/Schedule.css'
+
+
 const schedule = {
     date: new Date().toISOString().substring(0, 10),
     major: "SWB",
@@ -28,21 +31,29 @@ export default function Schedule({ selectedMajor, selectedSemester, selectedDate
                 <h4>Selected Date: {selectedDate}</h4>
             </div>
             <div>
-                <table>
+                <table className='calendar'>
                     <tr>
-                        <th>timeslot</th>
-                        <th>class</th>
+                        <th>Time</th>
+                        <th>Monday</th>
+                        <th>Tuesday</th>
+                        <th>Wednesday</th>
+                        <th>Thursday</th>
+                        <th>Friday</th>
                     </tr>
                     <tr>
-                        <td>9am - 12pm</td>
+                        <th>9am - 12pm</th>
                         <td>
                             <div>
                                 {schedule.schedule[0]}
                             </div>
                         </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                     </tr>
                     <tr>
-                        <td>13pm - 15pm</td>
+                        <th>13pm - 15pm</th>
                         <td>
                             <div onClick={() => {
                                 handleButtonClick(schedule.schedule[1])
@@ -50,14 +61,22 @@ export default function Schedule({ selectedMajor, selectedSemester, selectedDate
                                 {schedule.schedule[1]}
                             </div>
                         </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                     </tr>
                     <tr>
-                        <td>15pm - 17pm</td>
+                        <th>15pm - 17pm</th>
                         <td>
                             <div>
                                 {schedule.schedule[2]}
                             </div>
                         </td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                     </tr>
                 </table>
             </div>

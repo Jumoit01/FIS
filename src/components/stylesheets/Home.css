@@ -16,25 +16,26 @@
 .filterOption {
     grid-row: 2; /* This places the box in the second row */
     grid-column: 1; /* This places the box in the first column */
-    background-color: aquamarine;
 }
 
 .schedule {
     grid-row: 2 / 4; /* This places the box in the second row */
     grid-column: 2; /* This places the box in the first column */
-    background-color: red;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .details {
     grid-row: 3; /* This places the box in the second row */
     grid-column: 1; /* This places the box in the first column */
-    background-color: greenyellow;
 }
 
 .router {
     grid-row: 2 / 4; /* This places the box in the second row */
     grid-column: 2; /* This places the box in the first column */
-    background-color: magenta;
+    background-color: white;
 
     display: flex;
     flex-direction: column;

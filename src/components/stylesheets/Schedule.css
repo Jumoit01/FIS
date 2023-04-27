@@ -1,0 +1,38 @@
+.calendar {
+  border-collapse: collapse;
+  width: 45vw;
+}
+
+.calendar td,
+.calendar th {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+.calendar th {
+  background-color: #f2f2f2;
+}
+
+.calendar td:first-child,
+.calendar th:first-child {
+  width: 15%;
+}
+
+.calendar td:nth-child(2),
+.calendar th:nth-child(2),
+.calendar td:nth-child(3),
+.calendar th:nth-child(3),
+.calendar td:nth-child(4),
+.calendar th:nth-child(4),
+.calendar td:nth-child(5),
+.calendar th:nth-child(5),
+.calendar td:nth-child(6),
+.calendar th:nth-child(6) {
+  width: 17%;
+  height: 3rem;
+}
+
+.calendar td div {
+    cursor: pointer;
+}
