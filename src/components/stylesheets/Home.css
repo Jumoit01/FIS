@@ -7,14 +7,37 @@
 .title {
     grid-column: 1 / -1; /* This spans the first row */
     display: flex;
+    align-items: center;
+    text-align: left;
+
     background-color: #333;
     color: white;
 
     padding: 20px;
+    padding-left: 2vw;
+}
+
+.title h1 {
+    flex: 1;
 }
 
 .loginBtn {
+    width: 5vw;
+    height: 3rem;
+    margin-right: 2vw;
     
+    border: 2px solid whitesmoke;
+    border-radius: 0.75rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.loginBtn:hover {
+    border: 2px solid white;
+    border-radius: 1rem;
+    background-color: black;
 }
 
 .filterOption {
