@@ -70,6 +70,9 @@ export default function Home() {
         <div className='main' id='homeMain'>
             <div className='title'>
                 <h1>Faculty Information System</h1>
+                <div className='loginBtn' onClick={() => window.location.href = "/login"}>
+                    <h4>Login</h4>
+                </div>
             </div>
             <div className='filterOption'>
                 <h2>Choose your schedule:</h2>
