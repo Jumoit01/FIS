@@ -1,0 +1,31 @@
+.router {
+    grid-row: 2 / 4; /* This places the box in the second row */
+    grid-column: 2; /* This places the box in the first column */
+    background-color: white;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.exit {
+    display: flex;
+    flex-direction: row-reverse;
+    margin-top: -1vh;
+    margin-right: 1vw;
+}
+.exit svg {
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
+.routesContainer, .routesContainer {
+    height: 75vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.routesContainer img {
+    max-width: 15vw;
+}

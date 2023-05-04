@@ -1,4 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+
+import useSWR from 'swr';
 
 import Schedule from "./Schedule"
 import Details from './Details';
@@ -21,23 +23,37 @@ const options = [
     }
 ]
 
+const testMessage = {
+    "message":"[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object],[object Object] retrieved",
+    "data":[
+        {
+            "lecture_name":"Statistics",
+            "day_number":0,
+            "time_slot":0
+        },
+        {
+            "lecture_name":"Mathe 2",
+            "day_number":0,
+            "time_slot":2
+        },
+        {"lecture_name":"Electro Technology 2","day_number":1,"time_slot":0},{"lecture_name":"Programmieren 2","day_number":1,"time_slot":1},{"lecture_name":"Statistics","day_number":2,"time_slot":1},{"lecture_name":"Mathe 2","day_number":2,"time_slot":2},{"lecture_name":"Digital Technology 1","day_number":3,"time_slot":1},{"lecture_name":"Programmieren 2","day_number":3,"time_slot":2},{"lecture_name":"Digital Technology 1","day_number":4,"time_slot":1},{"lecture_name":"Electro Technology 2","day_number":4,"time_slot":2}]}
+
 
 
 export default function Home() {
     const [selectedMajor, setSelectedMajor] = useState('default');
     const [selectedSemester, setSelectedSemester] = useState('default');
-    const [selectedDate, setSelectedDate] = useState(new Date().toISOString().substring(0, 10));
     const [selectedClass, setSelectedClass] = useState(null);
     const [showPath, setShowPath] = useState(false);
+    
+    const [data, setData] = useState(null);
+    const [classData, setClassData] = useState(null);
 
     const handleMajorChange = (event) => {
         setSelectedMajor(event.target.value);
     }
     const handleSemesterChange = (event) => {
         setSelectedSemester(event.target.value);
-    }
-    const handleDateChange = (event) => {
-        setSelectedDate(event.target.value);
     }
     const handleStateChange = (updatedValue) => {
         setSelectedClass(updatedValue);
@@ -92,23 +108,19 @@ export default function Home() {
                         }
                     </select>
                 </div>
-                <div className='filter' id='dateFilter'>
-                    <h4>Date:</h4>
-                    <input type="date" value={selectedDate} onChange={handleDateChange} />
-                </div>
             </div>
             {
                 selectedMajor !== "default" && selectedSemester !== "default" ? (
-                    <Schedule selectedMajor={selectedMajor} selectedSemester={selectedSemester} selectedDate={selectedDate} onStateChange={handleStateChange}/>
+                    <Schedule selectedMajor={selectedMajor} selectedSemester={selectedSemester} data={data} setData={setData} onStateChange={handleStateChange}/>
                 ) : (
                     null
                 )
             }
             {
-                selectedClass !== null ? (<Details selectedClass={selectedClass} onStateChange={handleShowPathChange} />) : null 
+                selectedClass !== null ? (<Details selectedClass={selectedClass} data={classData} setData={setClassData} onStateChange={handleShowPathChange} />) : null 
             }
             {
-                showPath === true ? (<Router exit={exitShowPathChange}  />) : null
+                showPath === true ? (<Router exit={exitShowPathChange} roomNumber={classData.data[0].roomNumber} />) : null
             }
             
         </div>
