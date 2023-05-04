@@ -63,6 +63,7 @@ export default function Home() {
     }
     const exitShowPathChange = () => {
         setShowPath(false);
+        setSelectedClass(null)
     }
 
     return(
