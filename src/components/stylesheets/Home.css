@@ -13,6 +13,10 @@
     padding: 20px;
 }
 
+.loginBtn {
+    
+}
+
 .filterOption {
     grid-row: 2; /* This places the box in the second row */
     grid-column: 1; /* This places the box in the first column */
